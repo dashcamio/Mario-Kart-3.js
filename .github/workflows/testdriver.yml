@@ -1,0 +1,28 @@
+name: TestDriver.ai
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: "TestDriver"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dashcamio/testdriver@main
+        id: testdriver
+        with:
+          prompt: |
+            1. open http://localhost:5173 in google chrome
+            1. click 'Launch'
+            1. press 'Enter'
+            1. click 'Keyboard'
+            1. click 'Confirm'
+            1. press the 'w' key to drive forward
+            1. press the 's' key to drive backward
+            1. while holding 'w', press 'a' to turn left
+            1. while holding 'w', press 'd' to turn right
+            1. while holding 'w', press 'e' to boost
